@@ -1,0 +1,30 @@
+<!--=========================
+Name: Brittany Dockter
+Date: March 15, 2020
+Assignment: login.component.html
+Description: html form for login
+==========================-->
+
+<!-- login form -->
+<mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <input matInput placeholder="Employee ID" [(ngModel)]="employeeId" name="employeeId" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+        </tr></table>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()" color="primary">Submit</button>
+    </mat-card-actions>
+  </mat-card>
