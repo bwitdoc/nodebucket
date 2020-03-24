@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Add new task</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field style="width: 350px;">
+    <input matInput placeholder="Name" formControlName="text" (keydown.enter)="submit()" />
+  </mat-form-field>
+</mat-dialog-content>
+<div fxLayout="column" style="color: DF56A;" fxLayoutGap="5px">
+  <small *ngIf="form.controls['text'].hasError('minlength') && form.controls['text'].touched">The name must be at least
+    three characters long.</small>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+  <button mat-button [disabled]="!form.valid" (click)="submit()">Save</button>
+</mat-dialog-actions>

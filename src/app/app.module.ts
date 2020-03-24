@@ -23,6 +23,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './pages/login/login.component'
 import { AuthGuard } from './shared/guards/auth.guards';
 import { CookieService } from 'ngx-cookie-service';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
+import { AboutComponent } from './pages/about/about.component';
+import { MatDividerModule } from "@angular/material/divider";
+
 
 @NgModule({
   declarations: [
@@ -30,7 +35,10 @@ import { CookieService } from 'ngx-cookie-service';
     BaseLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent,
+    TaskCreateDialogComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +52,16 @@ import { CookieService } from 'ngx-cookie-service';
     MatSnackBarModule,
     MatTableModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'}),
+    RouterModule.forRoot(AppRoutes, { 
+      useHash: true, 
+      enableTracing: false, 
+      scrollPositionRestoration: 'enabled'
+    }),
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatDividerModule
   ],
   providers: [CookieService, AuthGuard],
   bootstrap: [AppComponent]

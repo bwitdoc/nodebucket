@@ -16,7 +16,7 @@ Description: html for main page
         <button class="logo" routerLink="/" mat-button>nodebucket</button>
 
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <button class="navbar-link" routerLink="/about" mat-button>About</button>
         <button class="navbar-link" routerLink="/login" mat-button>Login</button>
       </div>
 
@@ -35,7 +35,8 @@ Description: html for main page
     <footer class="footer">
       <mat-toolbar class="footer-content">
         <p>
-          &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+          &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link"
+            target="_blank">Bellevue University</a>
         </p>
       </mat-toolbar>
     </footer>
