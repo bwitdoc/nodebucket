@@ -1,3 +1,10 @@
+/*=========================
+Name: Brittany Dockter
+Date: March 26, 2020
+Assignment: about.component.spec.ts
+Description: components for the about page
+==========================*/
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';

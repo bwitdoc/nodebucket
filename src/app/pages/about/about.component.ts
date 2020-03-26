@@ -1,3 +1,10 @@
+/*=========================
+Name: Brittany Dockter
+Date: March 26, 2020
+Assignment: about.component.ts
+Description: required code for about component
+==========================*/
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

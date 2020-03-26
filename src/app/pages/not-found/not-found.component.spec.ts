@@ -1,3 +1,10 @@
+/*=========================
+Name: Brittany Dockter
+Date: March 26, 2020
+Assignment: not-found.component.spec.ts
+Description: required not-found component code
+==========================*/
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotFoundComponent } from './not-found.component';

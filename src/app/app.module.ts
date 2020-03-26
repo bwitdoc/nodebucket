@@ -1,3 +1,10 @@
+/*=========================
+Name: Brittany Dockter
+Date: March 26, 2020
+Assignment: app.module.ts
+Description: all required angular modules for application
+==========================*/
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
@@ -27,6 +34,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
 import { AboutComponent } from './pages/about/about.component';
 import { MatDividerModule } from "@angular/material/divider";
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -61,7 +69,8 @@ import { MatDividerModule } from "@angular/material/divider";
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    DragDropModule
   ],
   providers: [CookieService, AuthGuard],
   bootstrap: [AppComponent]
