@@ -5,15 +5,15 @@ Assignment: base-layout.component.html
 Description: html for main page
 ==========================-->
 
-<div fxLayout="column">
+<div fxLayout="column" class="parent">
 
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar>
+    <mat-toolbar class="toolbar">
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>nodebucket</button>
+        <button class="logo" routerLink="/" mat-button><b>nodebucket</b></button>
 
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" routerLink="/about" mat-button>About</button>
@@ -24,7 +24,7 @@ Description: html for main page
   </nav>
 
   <!-- main content -->
-  <div fxFlex>
+  <div fxFlex class="sub-parent">
     <main class="main-content" fxFlex="100%;">
       <router-outlet></router-outlet>
     </main>

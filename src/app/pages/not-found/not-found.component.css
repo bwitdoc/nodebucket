@@ -1,0 +1,27 @@
+.card {
+    padding: 5%;
+    width: 35%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    background-color: #423e8a;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.parent {
+    height: 100%;
+    margin: 0;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 48px;
+    padding: 0 10px;
+}
+
+.card-subtitle, .card-content {
+    text-align: center;
+    padding: 0 10px;
+    color: white;
+}

@@ -1,3 +1,7 @@
+.parent {
+  height: 100%;
+}
+
 .logo {
   margin-left: 75px;
   font-size: 24px;
@@ -6,6 +10,15 @@
 
 .navbar-container {
   padding: 5px;
+  color: #ffffee;
+}
+
+.toolbar {
+  background: linear-gradient(
+        180deg,
+        #3e828a 0%,
+        #423e8a 100%
+    )
 }
 
 .navbar-link {
@@ -14,7 +27,21 @@
 }
 
 .main-content {
-  padding-left: 30px;
+  padding: 10% 0;
+  min-height: 100vh;
+  height: auto;
+  position: relative;
+  background-image: url("../../../../nodebucket-icon.png");
+  background-attachment: fixed;
+  background-position-x: 5%;
+  background-position-y: 30%;
+  background-repeat: no-repeat;
+  background-size: 500px;
+  height: 100%;
+}
+
+.sub-parent {
+  height: 100%;
 }
 
 .footer {
@@ -28,10 +55,17 @@
   font-weight: lighter;
   padding-left: 100px;
   letter-spacing: 3px;
+  color: #ffffee;
+  background: linear-gradient(
+        180deg,
+        #3e828a 0%,
+        #423e8a 100%
+    )
 }
 
 .bu-link {
   text-decoration: none;
+  color: #ffffee;
 }
 
 .bu-link:hover {

@@ -6,24 +6,41 @@ Description: styling for the about page
 ==========================*/
 
 .main-welcome {
-    margin-top: 30px;
+    /* margin-top: 0; */
+    height: 100%;
   }
   
   .title {
     text-align: center;
     font-weight: lighter;
+    font-size: 40px;
   }
   
+  .container {
+    height: 100%;
+    margin: 0 auto;
+  }
   .subtitle {
     text-align: center;
-    font-size: 14px;
+    font-size: 28px;
   }
   
   .about-content {
     width: 50%;
     margin: 0 auto;
+    height: 100%;
+    font-size: 16px;
   }
   
   .p-title {
     font-size: 24px;
+  }
+  .divider {
+    border: 1px solid #423e8a;
+  }
+  .title {
+    margin: 0;
+  }
+  .thanks-container {
+    text-align: center;
   }

@@ -5,4 +5,22 @@ Assignment: login.component.css
 Description: angular pre-built theme
 ==========================*/
 
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+.login-container {
+    width: 30%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    color: white;
+    padding: 2%;
+    text-align: center;
+    background-color: #423e8a;
+}
+.login-subtitle {
+    color: white;
+}
+.parent {
+    height: 100%;
+    position: relative;
+}

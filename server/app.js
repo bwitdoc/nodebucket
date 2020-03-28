@@ -67,7 +67,7 @@ mongoose.connect(conn, {
 
  // FindAllTasks -- allows users to find all tasks for a single user
 app.get("/api/employees/:empId/tasks", function(req, res, next) {
-  Employee.findOne({ empId: req.params.empId }, "empId todo done", function(
+  Employee.findOne({ empId: req.params.empId }, "empId todo doing done", function(
     err,
     employee
   ) {
@@ -121,6 +121,9 @@ app.put("/api/employees/:empId/tasks/:taskId", function(req, res, next) {
       const todoItem = employee.todo.find(
         item => item._id.toString() === req.params.taskId
       );
+      const doingItem = employee.doing.find(
+        item => item._id.toString() === req.params.taskId
+      );
       const doneItem = employee.done.find(
         item => item._id.toString() === req.params.taskId
       );
@@ -129,6 +132,7 @@ app.put("/api/employees/:empId/tasks/:taskId", function(req, res, next) {
       if (todoItem) {
         employee.todo.id(todoItem._id).set({
           todo: req.body.todo,
+          doing: req.body.doing,
           done: req.body.done
         });
         employee.save(function(err, emp1) {
@@ -140,9 +144,10 @@ app.put("/api/employees/:empId/tasks/:taskId", function(req, res, next) {
             res.json(emp1);
           }
         });
-      } else if (doneItem) {
-        employee.done.id(doneItem._id).set({
+      } else if (doneItem, doingItem) {
+        employee.done.id(doneItem._id, doingItem._id).set({
           done: req.body.done,
+          doing: req.body.doing,
           todo: req.body.todo
         });
         // save the task after it has been updated and ran through error handling
@@ -179,6 +184,9 @@ app.delete("/api/employees/:empId/tasks/:taskId", function(req, res, next) {
       const todoItem = employee.todo.find(
         item => item._id.toString() === req.params.taskId
       );
+      const doingItem = employee.doing.find(
+        item => item._id.toString() === req.params.taskId
+      );
       const doneItem = employee.done.find(
         item => item._id.toString() === req.params.taskId
       );
@@ -197,6 +205,17 @@ app.delete("/api/employees/:empId/tasks/:taskId", function(req, res, next) {
         // remove the doneItem (task) with error handling
       } else if (doneItem) {
         employee.done.id(doneItem._id).remove();
+        employee.save(function(err, emp2) {
+          if (err) {
+            console.log(err);
+            return next(err);
+          } else {
+            console.log(emp2);
+            res.json(emp2);
+          }
+        });
+      } else if (doingItem) {
+        employee.doing.id(doingItem._id).remove();
         employee.save(function(err, emp2) {
           if (err) {
             console.log(err);

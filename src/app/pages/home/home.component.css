@@ -21,6 +21,7 @@ Description: styling for drag and drop/home page
 
 .task-title {
   font-weight: lighter;
+  color: white;
 }
 
 .tasks-container {
@@ -42,7 +43,12 @@ Description: styling for drag and drop/home page
   min-height: 60px;
   height: 68px;
   font-size: 14px;
-  border-bottom: solid 1px #ccc
+  border-bottom: solid 1px #ccc;
+}
+.column-container {
+  background-color: #423e8a;
+  margin: 10px;
+  padding: 10px;
 }
 
 .cdk-drag-preview {

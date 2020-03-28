@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   sessionUser: string;
   tasks: any;
   todo: any;
+  doing: any;
   done: any;
 
   constructor(private http: HttpClient, private cookieService: CookieService, private dialog: MatDialog) {
@@ -33,9 +34,11 @@ export class HomeComponent implements OnInit {
     this.http.get('/api/employees/' + this.sessionUser + '/tasks').subscribe(res => {
       this.tasks = res;
       this.todo = this.tasks.todo;
+      this.doing = this.tasks.doing;
       this.done = this.tasks.done;
       console.log(this.tasks);
       console.log(this.todo);
+      console.log(this.doing);
       console.log(this.done);
     }, err => {
       console.log(err);
@@ -59,6 +62,7 @@ export class HomeComponent implements OnInit {
         }).subscribe(res => {
           this.tasks = res;
           this.todo = this.tasks.todo;
+          this.doing = this.tasks.doing;
           this.done = this.tasks.done;
         }, err => {
           console.log(err);
@@ -75,6 +79,7 @@ export class HomeComponent implements OnInit {
       this.http.delete('/api/employees/' + this.sessionUser + '/tasks/' + taskId).subscribe(res => {
         this.tasks = res;
         this.todo = this.tasks.todo;
+        this.doing = this.doing.todo;
         this.done = this.tasks.done;
       }, err => {
         console.log(err);
@@ -88,9 +93,10 @@ export class HomeComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
 
-      this.updateTasks(this.todo, this.done).subscribe(res => {
+      this.updateTasks(this.todo, this.doing, this.done).subscribe(res => {
         this.tasks = res;
         this.todo = this.tasks.todo;
+        this.doing = this.tasks.doing;
         this.done = this.tasks.done;
       }, err => {
         console.log('Error saving update tasks');
@@ -99,6 +105,7 @@ export class HomeComponent implements OnInit {
 
       console.log('Moved task in existing column');
       console.log(this.todo);
+      console.log(this.doing);
       console.log(this.done);
     } else {
       transferArrayItem(
@@ -107,9 +114,10 @@ export class HomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
         );
-      this.updateTasks(this.todo, this.done).subscribe(res => {
+      this.updateTasks(this.todo, this.doing, this.done).subscribe(res => {
         this.tasks = res;
         this.todo = this.tasks.todo;
+        this.doing = this.tasks.doing;
         this.done = this.tasks.done;
       }, err => {
         console.log('Error saving update tasks');
@@ -117,16 +125,18 @@ export class HomeComponent implements OnInit {
       });
       console.log('Moved tasks to a new column');
       console.log(this.todo);
+      console.log(this.doing);
       console.log(this.done);
     }
   }
 
   // Reusable API for task updates
-  // @Returns: An Array of tasks (todo; done) by employeeId
+  // @Returns: An Array of tasks (todo; doing; done) by employeeId
 
-  updateTasks(todo, done) {
+  updateTasks(todo, doing, done) {
     return this.http.put('/api/employees/' + this.sessionUser + '/tasks', {
       todo,
+      doing,
       done
     });
   }

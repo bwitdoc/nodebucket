@@ -7,17 +7,17 @@ Description: home page content
 
 <div fxLayout="column" class="main-welcome">
   <h1 fxFlex class="title">
-    Welcome to WEB 450's - nodebucket Project <br />
+    Welcome to <b>nodebucket</b> <br />
     <span class="subtitle">
-      Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait
-      until the last minute to begin working on each item.
+      Start your journey for customized task management with <b>nodebucket</b> today.
     </span>
   </h1>
   <div fxLayout="row" fxLayoutGap="15px" class="tasks-container">
+    <!-- to do column -->
     <div fxFlex>
-      <mat-card class="mat-elevation-z0">
+      <mat-card class="mat-elevation-z0 column-container">
         <mat-card-title class="task-title">
-          ToDo
+          To Do
           <div fxFlex></div>
           <button [matMenuTriggerFor]="taskMenu" mat-button x-position="before">
             <mat-icon styler="color: #616771">more_horiz</mat-icon>
@@ -28,15 +28,8 @@ Description: home page content
         </mat-card-title>
         <mat-card-content>
           <div
-          fxLayout="column"
-          fxLayoutGap="10px"
-          cdkDropList
-          #todoList="cdkDropList"
-          [cdkDropListData]="todo"
-          [cdkDropListConnectedTo]="[doneList]"
-            class="task-list"
-            (cdkDropListDropped)="drop($event)">
-
+          fxLayout="column" fxLayoutGap="10px" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[doingList, doneList]" class="task-list" (cdkDropListDropped)="drop($event)">
             <div *ngFor="let item of todo" cdkDrag>
               <mat-card class="mat-elevation-z0 task-card" fxFlex>
                 <mat-card-subtitle style="height: 10% !important;" class="task-functions">
@@ -59,14 +52,48 @@ Description: home page content
         </mat-card-content>
       </mat-card>
     </div>
+
+    <!-- doing column -->
     <div fxFlex>
-      <mat-card class="mat-elevation-z0">
+      <mat-card class="mat-elevation-z0 column-container">
+        <mat-card-title class="task-title">
+          Doing
+        </mat-card-title>
+        <mat-card-content style="padding-top: 7px;">
+          <div fxLayout="column" fxLayoutGap="10px" cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
+            [cdkDropListConnectedTo]="[todoList, doneList]" class="task-list" (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let item of doing" cdkDrag>
+              <mat-card class="mat-elevation-z0 task-card" fxFlex>
+                <mat-card-subtitle style="height: 10% !important;" class="task-functions">
+                  <div fxFlex></div>
+                  <button [matMenuTriggerFor]="doingOptionsMenu" mat-icon-button class="ml-xs">
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <mat-menu #doingOptionsMenu="matMenu" x-position="before">
+                    <button (click)="deleteTask(item._id)" mat-menu-item>
+                      Remove
+                    </button>
+                  </mat-menu>
+                </mat-card-subtitle>
+                <mat-card-content>
+                  {{item.text}}
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- done column -->
+    <div fxFlex>
+      <mat-card class="mat-elevation-z0 column-container">
         <mat-card-title class="task-title">
           Done
         </mat-card-title>
         <mat-card-content style="padding-top: 7px;">
           <div fxLayout="column" fxLayoutGap="10px" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-            [cdkDropListConnectedTo]="[todoList]" class="task-list" (cdkDropListDropped)="drop($event)">
+            [cdkDropListConnectedTo]="[todoList, doingList]" class="task-list" (cdkDropListDropped)="drop($event)">
             <div *ngFor="let item of done" cdkDrag>
               <mat-card class="mat-elevation-z0 task-card" fxFlex>
                 <mat-card-subtitle style="height: 10% !important;" class="task-functions">

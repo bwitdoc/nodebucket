@@ -14,6 +14,7 @@ let employeeSchema = mongoose.Schema({
     firstName: {type: String},
     lastName: {type: String},
     todo: [Item],
+    doing: [Item],
     done: [Item]
 });
 
